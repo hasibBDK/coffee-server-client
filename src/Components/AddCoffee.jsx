@@ -1,4 +1,8 @@
 import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
+import headerbg from "../assets/15.jpg";
+import logo from "../assets/logo1.png";
+import { FaArrowLeft } from 'react-icons/fa';
 const AddCoffee = () => {
   const handleAddCoffee = (event) => {
     event.preventDefault();
@@ -29,7 +33,26 @@ const AddCoffee = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F0E6] py-10 px-5">
+    
+    <>
+      
+
+     <div className='flex justify-center items-center py-2' style={{ backgroundImage: `url(${headerbg})` }}>
+        <img src={logo} alt="Logo" className="w-12 h-12" />
+        <h1 className="text-3xl italic text-[#FFFFFF]">Espresso Emporium</h1>
+ </div>
+
+    
+    <div className="bg-[#F4F0E6]">
+  <Link to="/">
+    <h1 className='max-w-3xl font-bold mx-auto py-5 flex items-center gap-2'>
+      <FaArrowLeft /> Back to home
+    </h1>
+  </Link>
+</div>
+
+
+     <div className="min-h-screen bg-[#F4F0E6]  px-5">
       <div className="max-w-3xl mx-auto bg-[#EDEAD8] rounded-xl p-10">
 
         {/* Title */}
@@ -99,6 +122,10 @@ const AddCoffee = () => {
         </form>
       </div>
     </div>
+    
+    
+    
+    </>
   );
 };
 
