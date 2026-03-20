@@ -8,13 +8,15 @@ import cuplogo from "./assets/111.png"
 import badge from "./assets/222.png"
 import grades from "./assets/333.png"
 import bottle from "./assets/444.png"
+import Democoffee from './Components/Democoffee';
+import Footer from './Components/Footer';
 import './App.css'
 
 function App() {
   const [coffees, setCoffees] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/coffee')
+    fetch('https://coffe-store-server-one-flame.vercel.app/coffee')
       .then(res => res.json())
       .then(data => setCoffees(data));
   }, []);
@@ -29,10 +31,28 @@ function App() {
   return (
     <>
       {/* Header */}
-      <div className='flex justify-center items-center py-2' style={{ backgroundImage: `url(${headerbg})` }}>
-        <img src={logo} alt="Logo" className="w-12 h-12" />
-        <h1 className="text-3xl italic text-[#FFFFFF]">Espresso Emporium</h1>
-      </div>
+      <div className='flex justify-between items-center py-3 px-10' style={{ backgroundImage: `url(${headerbg})` }}>
+  
+  {/* Left - Logo & Name */}
+  <div className="flex items-center gap-2">
+    
+    <h1 className="text-xl italic text-[#FFFFFF] font-bold">Espresso Emporium</h1>
+  </div>
+
+  {/* Middle - Nav Links */}
+  <div className="flex items-center gap-6">
+    <Link to="/" className="text-white text-sm font-semibold px-4 py-2 rounded hover:bg-[#b8935a] transition">Home</Link>
+    <Link to="/AddCoffee" className="text-white text-sm px-4 py-2 font-semibold rounded hover:bg-[#b8935a] transition">Add Coffee</Link>
+    
+    <Link to="/signup" className=" text-white text-sm font-semibold px-4 py-2 rounded hover:bg-[#b8935a] transition">Sign Up</Link>
+  </div>
+
+  {/* Right - Logo */}
+  <div>
+    <img src={logo} alt="Logo" className="w-10 h-10" />
+  </div>
+
+</div>
 
       {/* Hero Section */}
       <div style={{ backgroundImage: `url(${secondlogo})` }} className="w-full h-[650px] bg-cover bg-center">
@@ -104,6 +124,10 @@ function App() {
           ))}
         </div>
       </div>
+
+
+      <Democoffee></Democoffee>
+      <Footer></Footer>
 
     </>
   )

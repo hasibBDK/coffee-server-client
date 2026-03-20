@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import headerbg from "../assets/15.jpg";
 import logo from "../assets/logo1.png";
 import { FaArrowLeft } from 'react-icons/fa';
+import Footer from './Footer';
 const AddCoffee = () => {
   const handleAddCoffee = (event) => {
     event.preventDefault();
@@ -17,7 +18,7 @@ const AddCoffee = () => {
 
     const coffee = { name, chef, supplier, taste, category, details, photo };
     console.log(coffee);
-    fetch('http://localhost:5000/coffee', {
+    fetch('https://coffe-store-server-one-flame.vercel.app/coffee', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(coffee)
@@ -37,10 +38,28 @@ const AddCoffee = () => {
     <>
       
 
-     <div className='flex justify-center items-center py-2' style={{ backgroundImage: `url(${headerbg})` }}>
-        <img src={logo} alt="Logo" className="w-12 h-12" />
-        <h1 className="text-3xl italic text-[#FFFFFF]">Espresso Emporium</h1>
- </div>
+     {/* Header */}
+           <div className='flex justify-between items-center py-3 px-10' style={{ backgroundImage: `url(${headerbg})` }}>
+       
+       {/* Left - Logo & Name */}
+       <div className="flex items-center gap-2">
+         
+         <h1 className="text-xl italic text-[#FFFFFF] font-bold">Espresso Emporium</h1>
+       </div>
+     
+       {/* Middle - Nav Links */}
+       <div className="flex items-center gap-6">
+         <Link to="/" className="text-white text-sm font-semibold px-4 py-2 rounded hover:bg-[#b8935a] transition">Home</Link>
+         <Link to="/AddCoffee" className="text-white text-sm px-4 py-2 font-semibold rounded hover:bg-[#b8935a] transition">Add Coffee</Link>
+         
+       </div>
+     
+       {/* Right - Logo */}
+       <div>
+         <img src={logo} alt="Logo" className="w-10 h-10" />
+       </div>
+     
+     </div>
 
     
     <div className="bg-[#F4F0E6]">
@@ -123,7 +142,7 @@ const AddCoffee = () => {
       </div>
     </div>
     
-    
+    <Footer />
     
     </>
   );

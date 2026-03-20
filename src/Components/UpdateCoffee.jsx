@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import headerbg from "../assets/15.jpg";
 import logo from "../assets/logo1.png";
 import { FaArrowLeft } from 'react-icons/fa';
-
+import Footer from './Footer';
 const UpdateCoffee = () => {
   const coffee = useLoaderData(); // ✅ existing data load হবে
 
@@ -20,7 +20,7 @@ const UpdateCoffee = () => {
 
     const updatedCoffee = { name, chef, supplier, taste, category, details, photo };
 
-    fetch(`http://localhost:5000/coffee/${coffee._id}`, {
+    fetch(`https://coffe-store-server-one-flame.vercel.app/coffee/${coffee._id}`, {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(updatedCoffee)
@@ -114,6 +114,7 @@ const UpdateCoffee = () => {
           </form>
         </div>
       </div>
+        <Footer />
     </>
   );
 };

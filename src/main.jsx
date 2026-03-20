@@ -10,7 +10,9 @@ import {
 } from "react-router-dom";
 import AddCoffee from './Components/AddCoffee.jsx';
 import UpdateCoffee from './Components/updateCoffee.jsx';
-
+import Signin from './Components/Signin.jsx'
+import Signup from './Components/Signup.jsx'
+import AuthProvider from './provider/Authprovider.jsx'
 
 const router = createBrowserRouter([
   {
@@ -24,13 +26,23 @@ const router = createBrowserRouter([
   {
     path: "updateCoffee/:id",
     element : <UpdateCoffee></UpdateCoffee>,
-    loader: ({params}) => fetch(`http://localhost:5000/coffee/${params.id}`),
+    loader: ({params}) => fetch(`https://coffe-store-server-one-flame.vercel.app/coffee/${params.id}`),
+  },
+  {
+    path:"signin",
+    element : <Signin></Signin>
+  },
+  {
+    path:"signup",
+    element :<Signup></Signup>
   }
 ]);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+   <StrictMode>
     <Toaster />
-   <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )
